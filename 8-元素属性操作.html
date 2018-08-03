@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img src="img/图片/1.jpeg" alt="" id="img">
+<script>
+    var oImg=document.getElementById('img');
+    // console.log(oImg.src);
+    console.log(oImg.id);
+
+    oImg.index='123456';
+    console.log(oImg.getAttribute('index'));//null
+    oImg.setAttribute('index','123456');
+
+    console.log(oImg.getAttribute('index'));
+    // console.log(oImg.getAttribute('src'));
+    // oImg.getAttribute('src')==='img/图片/1.jpeg'?alert('true'):alert('false');
+</script>
+</body>
+</html>

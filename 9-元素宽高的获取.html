@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        div{
+            width: 200px;
+            height: 200px;
+            background: #ff0;
+            border: 30px solid #000;
+            padding: 10px;
+            /*margin: 20px;*/
+            position: absolute;
+        }
+        footer{
+            font: 20px "Comic Sans MS"
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<footer></footer>
+<script>
+    var oDiv=document.getElementsByTagName('div')[0];
+    var oFooter=document.getElementsByTagName('footer')[0];
+
+    oFooter.innerHTML+='clientWidth:'+oDiv.clientWidth;
+    oFooter.innerHTML+='<br>';
+    oFooter.innerHTML+='clientHeight:'+oDiv.clientHeight;
+    oFooter.innerHTML+='<br>';
+    oFooter.innerHTML+='offsetWidth:'+oDiv.offsetWidth;
+    oFooter.innerHTML+='<br>';
+    oFooter.innerHTML+='offsetHeight:'+oDiv.offsetHeight;
+    oFooter.innerHTML+='<br>';
+    //可视区的宽高
+    oFooter.innerHTML+='可视区的宽：'+document.documentElement.clientWidth;
+    oFooter.innerHTML+='<br>';
+    oFooter.innerHTML+='可视区的高：'+document.documentElement.clientHeight;
+    oFooter.innerHTML+='<br>';
+
+    var clientW=document.documentElement.clientWidth;
+    var clientH=document.documentElement.clientHeight;
+    // console.log(clientH);
+    var iW=oDiv.offsetWidth;
+    var iH=oDiv.offsetHeight;
+    // console.log(iH);
+    var myLeft=(clientW-iW)/2;
+    var myTop=(clientH-iH)/2;
+    oDiv.style.left=myLeft+'px';
+    oDiv.style.top=myTop+'px';
+
+    oFooter.innerHTML+='left:'+myLeft+'px';
+    oFooter.innerHTML+='top:'+myTop+'px';
+</script>
+</body>
+</html>
