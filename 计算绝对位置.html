@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        div{
+
+        }
+        #div1{
+            width: 200px;
+            height: 200px;
+            border: 20px dashed #f00;
+            background: #00f;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+        }
+        #div2{
+            width: 100px;
+            height: 100px;
+            border: 10px dashed #000;
+            background: #0f0;
+            position: absolute;
+            left: 30px;
+        }
+        #div3{
+            width: 50px;
+            height: 50px;
+            border: 5px dashed #00f;
+            background: #f00;
+            position: absolute;
+            left: 730px;
+            /*left: 0;*/
+            transition: 3s;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">
+    <div id="div2">
+        <div id="div3"></div>
+    </div>
+</div>
+<!--<input type="button" value="MOVE-LEFT">-->
+<script>
+    var oDiv1=document.getElementById('div1');
+    var oDiv2=document.getElementById('div2');
+    var oDiv3=document.getElementById('div3');
+    var oBtn=document.getElementsByTagName('input')[0];
+    var elem=oDiv3;
+    var left=0;
+    // console.log(elem.offsetParent.offsetLeft);
+    var borderWidth=parseInt(getComputedStyle(elem).borderWidth);
+    // console.log(borderWidth);
+
+    console.log(elem.getBoundingClientRect().left-elem.offsetLeft);
+    while (elem){
+        // console.log(borderWidth);
+        left+=elem.offsetLeft+parseInt(getComputedStyle(elem).borderWidth);
+        // console.log(left);
+        elem=elem.offsetParent;
+    }
+    left-=borderWidth+oDiv3.offsetLeft;
+    document.onclick=function(){
+        oDiv3.style.left=-left+'px';
+    };
+    console.log(left);
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        #list{
+            /*border: 1px solid #f00;*/
+        }
+        #list li{
+            border: 1px dashed #000;
+            width: 300px;
+            height: 40px;
+            background: #ccc;
+            text-align: center;
+            font: 20px/40px '微软雅黑', sans-serif;
+        }
+        #list .none{
+            background: #ff0;
+        }
+        #list .hover{
+            font-size: 40px;
+            background: #0ff;
+        }
+        #list .near{
+            background: pink;
+        }
+        #list .side{
+            background: orange;
+        }
+    </style>
+    <script>
+        window.onload=function () {
+            var oUl=document.getElementById('list');
+            var aLis=oUl.children;
+            var frist=oUl.firstElementChild;
+            var last=oUl.lastElementChild;
+            for (var i=0;i<aLis.length;i++){
+                aLis[i].onmouseover=function () {
+                    if(this===frist||this===last){
+                        this.className='side';
+                    }else{
+                        this.className='hover';
+                        this.previousElementSibling.className='near';
+                        this.nextElementSibling.className='near';
+                        frist.className='none';
+                        last.className='none';
+                    }
+                };
+                aLis[i].onmouseout=function () {
+                    for(var i=0;i<aLis.length;i++){
+                        aLis[i].className='';
+                    }
+                    frist.className='none';
+                    last.className='none';
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<ul id="list">
+    <li class="none">这是头部</li>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li class="none">这是尾部</li>
+</ul>
+</body>
+</html>
