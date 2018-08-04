@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="add">
+<ul></ul>
+<script>
+    var oUl=document.getElementsByTagName('ul')[0];
+    var oBtn=document.getElementsByTagName('input')[0];
+    var str='';
+    var num=0;
+    /*oBtn.onclick=function () {
+        str+='<li>'+num+'</li>';
+        num++;
+        oUl.innerHTML=str;
+    };*/
+    oBtn.onclick=function () {
+        var li=document.createElement('li');
+        li.innerHTML=num;
+        num++;
+        // oUl.appendChild(li);
+        // 如果第二个参数为假的，那么会将某个元素添加到父元素的末位
+        // oUl.insertBefore(li,null);
+        oUl.insertBefore(li,oUl.children[0]);
+    }
+</script>
+</body>
+</html>

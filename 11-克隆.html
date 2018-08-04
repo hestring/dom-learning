@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        #list li{
+            width: 80px;
+            height: 30px;
+            font: 20px/30px '微软雅黑', sans-serif;
+            text-align: center;
+            color: #fff;
+            background: hotpink;
+            border: 1px dashed #000;
+            margin-bottom: 5px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<button>添加1</button>
+<button>添加2</button>
+<button>删除1</button>
+<button>删除2</button>
+<button>替换</button>
+<button>克隆</button>
+<ul id="list"></ul>
+<script>
+    var oUl=document.getElementById('list');
+    var aBtn=document.getElementsByTagName('button');
+    var num=0;
+    aBtn[0].onclick=function () {
+        var li=document.createElement('li');
+        li.innerHTML=num;
+        num++;
+        oUl.appendChild(li);
+    };
+    aBtn[1].onclick=function () {
+        var li=document.createElement('li');
+        li.innerHTML=num;
+        li.style.background='orange';
+        num++;
+        oUl.insertBefore(li,oUl.firstElementChild);
+    };
+    aBtn[2].onclick=function () {
+        // oUl.removeChild(oUl.firstElementChild);
+        if(oUl.children[0]){
+            oUl.removeChild(oUl.children[0]);
+        }else{
+            alert('操作错误！');
+        }
+
+    };
+    aBtn[3].onclick=function () {
+        if (oUl.lastElementChild){
+            oUl.removeChild(oUl.lastElementChild);
+        } else{
+            alert('操作错误！');
+        }
+    };
+    aBtn[4].onclick=function () {
+        var li=document.createElement('li');
+        li.style.background='#999';
+        oUl.replaceChild(li,oUl.firstElementChild);
+    };
+    aBtn[5].onclick=function () {
+        var elem=oUl.children[0];
+        var cElem=elem.cloneNode(true);  //默认false,无孩子
+        oUl.insertBefore(cElem,oUl.firstElementChild);
+    }
+</script>
+</body>
+</html>
