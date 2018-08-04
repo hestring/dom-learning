@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table{
+            border: 1px solid #000;
+            border-collapse: collapse; //important
+        }
+        th,td{
+            border: 1px dashed #000;
+            width: 100px;
+            height: 30px;
+            padding: 0;  //reset
+        }
+        tbody td{
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<table id="table">
+    <thead>
+        <tr>
+            <th>头</th>
+            <th>头</th>
+            <th>头</th>
+            <th>头</th>
+            <th>头</th>
+            <th>头</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <td>尾</td>
+            <td>尾</td>
+            <td>尾</td>
+            <td>尾</td>
+            <td>尾</td>
+            <td>尾</td>
+        </tr>
+    </tfoot>
+    <tbody>
+        <tr>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+        </tr>
+        <tr>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+            <td>内容</td>
+        </tr>
+    </tbody>
+</table>
+<script>
+    var oTable=document.getElementById('table');
+    oTable.tHead.style.cssText='background:#0ff';
+    oTable.tFoot.style.background='#0f0';
+    oTable.rows[1].style.background='#f00';
+    oTable.tBodies[0].rows[1].style.background='gray';
+    var index=0;
+    setInterval(function () {
+        for (var i=0;i<6;i++){
+            oTable.tBodies[0].rows[0].cells[i].style.background='#fff';
+            oTable.tBodies[0].rows[1].cells[i].style.background='#fff';
+        }
+        oTable.tBodies[0].rows[0].cells[index%6].style.background='#00f';
+        oTable.tBodies[0].rows[1].cells[5-index%6].style.background='#00f';
+        index++;
+    },300);
+
+</script>
+</body>
+</html>
